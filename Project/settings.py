@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'accounts',
     'property',
     'settings',
+    'blog',
     'about',
+    
 ]
 
 MIDDLEWARE = [
