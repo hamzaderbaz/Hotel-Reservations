@@ -1,14 +1,15 @@
 - main categories [reaturant - hotel - shopping]
+
 - property : 
     - title .
     - price .
-    - rating
+    - rating *
     - description  .
-    - place  .
+    - place * .
     - main image .
-    - images  .
-    - category .
-    - book form 
+    - images * .
+    - category * .
+    - book form *
 
 
 
@@ -27,10 +28,10 @@
     - post : 
         - title
         - descrption 
-        -category
+        - category *
         - image
         - created at
-        - comments
+        - comments *
         - authot
 
 
