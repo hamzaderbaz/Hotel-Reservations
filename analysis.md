@@ -1,15 +1,23 @@
 - main categories [reaturant - hotel - shopping]
 
 - property : 
-    - title .
-    - price .
-    - rating *
-    - description  .
-    - place * .
-    - main image .
-    - images * .
-    - category * .
-    - book form *
+    - name
+    - main image 
+    - images * 
+    - price 
+    - description
+    - place * 
+    - category *
+
+    - rating * :
+        - room show rating 
+        - add rate [booked]
+        - room --> avg
+        - rating 
+    
+    - book form * :
+        - book 
+        - check avaiblity
 
 
 
