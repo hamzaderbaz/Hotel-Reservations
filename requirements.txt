@@ -112,3 +112,4 @@ virtualenv==20.24.3
 virtualenv-clone==0.5.7
 wget==3.2
 yarl==1.9.2
+ksljdal
