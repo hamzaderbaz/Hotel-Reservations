@@ -1,4 +1,4 @@
-- main categories [reaturant - hotel - shopping]
+- booking hotels -  main categories [reaturant - hotel - shopping]
 
 - property : 
     - name
