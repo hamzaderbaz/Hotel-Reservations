@@ -1,4 +1,4 @@
-- booking hotels -  main categories [reaturant - hotel - shopping]
+- main categories [reaturant - hotel - shopping]
 
 - property : 
     - name
@@ -19,17 +19,41 @@
         - book 
         - check avaiblity
 
+    - related rooms
+
+
+- blog :
+    - auther 
+    - title
+    - tags *
+    - image 
+    - created at 
+    - description
+    - categories *
+
+    - comments *
+
 
 
 - about : 
-    about:
-        - vision
-        - mission 
-        - goals 
+    - vision
+    - mission 
+    - goals 
 
     FAQ :
         - title
         - description 
+
+
+Website:
+    - name 
+    - logo
+    - email
+    - phone 
+    - description 
+    - fb_link
+    - tw_linl
+    - ins_link
 
 
 - articles : 
@@ -43,13 +67,15 @@
         - authot
 
 
-- contact form 
+
+- contact form :
     - name
     - email 
     - subject 
     - message
 
 contact information : 
+
     - email 
     - address
     - mobile number

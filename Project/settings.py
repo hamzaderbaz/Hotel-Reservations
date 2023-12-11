@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #my apps
-    'accounts', 'property', 'settings', 'blog', 'about',
+    'accounts', 'property', 'settings', 'blog', 'about', 'taggit',
     
 ]
 
@@ -121,6 +121,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    "/var/www/static/",
+]
+
+MEDIA_URL = 'static/'
+MEDIA_ROOT = BASE_DIR / "media",
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
