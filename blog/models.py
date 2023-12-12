@@ -15,39 +15,24 @@ class Post(models.Model):
     description = models.TextField(max_length=10000 , verbose_name=_('description'))
     created_at = models.DateTimeField(default=timezone.now)
     category = models.ForeignKey('Category', related_name='post_category', on_delete=models.CASCADE , verbose_name=_('category'))
-    # slug = models.SlugField(_('slug') ,blank=True, null=True)
-    # actvie = models.BooleanField(default=False)
+    slug = models.SlugField(blank=True, null=True)
+    
 
-    # def save(self, *args, **kwargs):
-    #    if not self.slug:
-    #        self.slug = slugify(self.title)    
-    #    super(Post, self).save(*args, **kwargs) # Call the real save() method
-
-    # class Meta:
-    #     verbose_name = _("Post")
-    #     verbose_name_plural = _("Posts")
+    def save(self, *args, **kwargs):
+        if self.title:
+            self.slug = slugify(self.title)
+        super(Post, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title
 
-    # def get_absolute_url(self):
-    #     return reverse("blog:post_detail", kwargs={"slug": self.slug})
+    
 
 
 
 class Category(models.Model):
     name = models.CharField(max_length=25)
-    # slug = models.SlugField(_('slug') ,blank=True, null=True)
-
-
-    # def save(self, *args, **kwargs):
-    #    if not self.slug:
-    #        self.slug = slugify(self.name)    
-    #    super(Category, self).save(*args, **kwargs) # Call the real save() method
-
-    # class Meta:
-    #     verbose_name = ("Category")
-    #     verbose_name_plural = ("Categories")
+   
 
     def __str__(self):
         return self.name
