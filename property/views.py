@@ -7,7 +7,7 @@ from .models import Property
 
 class PropertyList(ListView):
     # pass
-    model = property 
+    model = Property 
     #filter
 
 
