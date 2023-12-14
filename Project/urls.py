@@ -23,10 +23,10 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    # path('i18n/', include('django.conf.urls.i18n')),
-    # path('api-auth/', include('rest_framework.urls')),
-    # path('accounts/', include('django.contrib.auth.urls')),
-    # path('accounts/' , include('accounts.urls', namespace='accounts')),
+    path('i18n/', include('django.conf.urls.i18n')),
+    path('api-auth/', include('rest_framework.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/' , include('accounts.urls', namespace='accounts')),
     path('admin/', admin.site.urls),
     path('property/' , include('property.urls' , namespace='property')),
     # path('blog/' , include('blog.urls' , namespace='blog')),
