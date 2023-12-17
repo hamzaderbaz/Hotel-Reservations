@@ -29,7 +29,7 @@ class Property(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse("property", kwargs={"pk": self.pk})
+        return reverse("property:property_detail", kwargs={"slug": self.slug})
     
 
 

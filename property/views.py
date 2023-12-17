@@ -6,14 +6,14 @@ from .models import Property
 
 
 class PropertyList(ListView):
-    # pass
     model = Property 
     #filter
+    # pass
 
 
 
 class PropertyDetail(DetailView):
-    pass
+    model = Property
     #book
 
 
