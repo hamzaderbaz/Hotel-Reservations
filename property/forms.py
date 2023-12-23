@@ -1,5 +1,5 @@
 from django import forms
-from . models import PropertyBook #, PropertyReview
+from .models import PropertyBook , PropertyReview
 
 
 
@@ -8,8 +8,9 @@ class PropertyBookForm(forms.ModelForm):
     # date_to = forms.DateField(widget= forms.DateInput(attrs={'id':'checkin_date'}))
     class Meta:
         model = PropertyBook
-        fields = '__all__'
-        # fields = ['user','date_from','date_to','guest','children']
+
+        # fields = '__all__'
+        fields = ['date_from', 'date_to', 'guest', 'children']
 
 
 

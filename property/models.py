@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.utils.text import slugify
 from django.urls import reverse
-# from django.utils import timezone
+from django.utils import timezone
 
 
 
@@ -89,11 +89,12 @@ class PropertyBook(models.Model):
 
     user = models.ForeignKey(User, related_name='user_book', on_delete=models.CASCADE) 
     property = models.ForeignKey(Property, related_name='property_book', on_delete=models.CASCADE)
-    date_from = models.DateField(auto_now=True)
-    date_to =  models.DateField(auto_now=True)
+    # date_from = models.DateField(auto_now_add=True, editable=False)
+    date_from = models.DateField(default=timezone.now)
+    date_to = models.DateField(default=timezone.now)
     guest = models.IntegerField(default=1 , choices=PEOPLE_TYPE)
     children = models.IntegerField(default=0 , choices=PEOPLE_TYPE)
-    # slug = models.SlugField(blank=True, null=True)
+    slug = models.SlugField(blank=True, null=True)
 
     def __str__(self):
         return str(self.property)

@@ -4,7 +4,7 @@ from django_summernote.admin import SummernoteModelAdmin
 from .models import Property, PropertyImages, Place, Category, PropertyReview, PropertyBook
 
 
-class SomeModelAdmin(SummernoteModelAdmin):  # instead of ModelAdmin
+class SomeModelAdmin(SummernoteModelAdmin):  
     summernote_fields = '__all__'
 
     

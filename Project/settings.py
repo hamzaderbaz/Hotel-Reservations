@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #my apps
-    'accounts', 'property', 'settings', 'blog', 'about', 'django_summernote', 'rest_framework', "bootstrap4", 'taggit',
+    'accounts', 'property', 'settings', 'blog', 'about', 
+    'django_summernote', 'rest_framework', "bootstrap4", 'django_bootstrap5', 'django_filters', 'taggit', 
     
 ]
 
@@ -132,6 +133,7 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / "media"
 # MEDIA_ROOT = '/path/to/your/media/directory/'
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
