@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #my apps
-    'accounts', 'property', 'settings', 'blog', 'about', 'taggit',
+    'accounts', 'property', 'settings', 'blog', 'about', 'django_summernote', 'rest_framework', "bootstrap4", 'taggit',
     
 ]
 

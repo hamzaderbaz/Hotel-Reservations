@@ -16,10 +16,8 @@ class Property(models.Model):
     place = models.ForeignKey('Place', related_name='property_place', on_delete=models.CASCADE)
     category = models.ForeignKey('Category', related_name='property_category', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now=True)
-    # created_at = models.DateTimeField(default=timezone.now)
     slug = models.SlugField(blank=True, null=True)
     
-
     def save(self, *args, **kwargs):
         if self.name:
             self.slug = slugify(self.name)
@@ -50,7 +48,6 @@ class Place(models.Model):
     name = models.CharField(max_length=50)
     image = models.ImageField( upload_to='places/')
 
-
     def __str__(self):
         return self.name
     
@@ -59,7 +56,6 @@ class Place(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=25)
 
-        
     def __str__(self):
         return self.name
 
@@ -74,7 +70,6 @@ class PropertyReview(models.Model):
     rating = models.PositiveIntegerField(default=0 ,  validators=[MaxValueValidator(5)])
     feedback = models.TextField(max_length=200)
     created_at = models.DateTimeField(auto_now=True)
-
 
     def __str__(self):
         return str(self.property)
@@ -99,9 +94,6 @@ class PropertyBook(models.Model):
     guest = models.IntegerField(default=1 , choices=PEOPLE_TYPE)
     children = models.IntegerField(default=0 , choices=PEOPLE_TYPE)
     # slug = models.SlugField(blank=True, null=True)
-
-
-
 
     def __str__(self):
         return str(self.property)
