@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 from django.contrib.auth.models import User
-# from taggit.managers import TaggableManager
+from taggit.managers import TaggableManager
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
@@ -10,7 +10,7 @@ from django.utils.translation import gettext_lazy as _
 class Post(models.Model):
     author = models.ForeignKey(User,related_name='post_author' , on_delete=models.CASCADE , verbose_name=_('author'))
     name = models.CharField(max_length=50 , verbose_name=_('name'))
-    # tags = TaggableManager()
+    tags = TaggableManager()
     image = models.ImageField(_('image') ,upload_to='blog/')
     description = models.TextField(max_length=10000 , verbose_name=_('description'))
     created_at = models.DateTimeField(default=timezone.now)
@@ -26,6 +26,8 @@ class Post(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse("blog:post_detail", kwargs={"slug": self.slug})
     
 
 

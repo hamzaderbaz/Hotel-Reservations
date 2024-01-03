@@ -8,16 +8,16 @@ from django.db.models import Count, Q
 
 class PostList(ListView):
     model = Post
-    paginate_by = 8
+    paginate_by = 1
 
-    def get_queryset(self):
-        name = self.request.GET.get('q','')
+    # def get_queryset(self):
+    #     name = self.request.GET.get('q','')
         
-        object_list = Post.objects.filter(
-            Q(title__icontains=name) | 
-            Q(description__icontains=name)
-        )
-        return object_list
+    #     object_list = Post.objects.filter(
+    #         Q(title__icontains=name) | 
+    #         Q(description__icontains=name)
+    #     )
+    #     return object_list
     
 
 
