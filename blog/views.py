@@ -8,16 +8,16 @@ from django.db.models import Count, Q
 
 class PostList(ListView):
     model = Post
-    paginate_by = 1
+    paginate_by = 4
 
-    # def get_queryset(self):
-    #     name = self.request.GET.get('q','')
+    def get_queryset(self):
+        name = self.request.GET.get('q','')
         
-    #     object_list = Post.objects.filter(
-    #         Q(title__icontains=name) | 
-    #         Q(description__icontains=name)
-    #     )
-    #     return object_list
+        object_list = Post.objects.filter(
+            Q(name__icontains=name) | 
+            Q(description__icontains=name)
+        )
+        return object_list
     
 
 
@@ -37,18 +37,28 @@ class PostsByCategory(ListView):
     model = Post
 
     def get_queryset(self):
-        objects_list = Post.objects.filter(
-            Q(category__name__icontains=self.kwargs['slug'])
-        )
-        return objects_list
+        category_slug = self.kwargs['slug']
+        return Post.objects.filter(category__slug=category_slug)
+    
+
+    # def get_queryset(self):
+    #     objects_list = Post.objects.filter(
+    #         Q(category__name__icontains=self.kwargs['slug'])
+    #     )
+    #     return objects_list
     
 
 
 class PostsByTags(ListView):
     model = Post
-
+    
     def get_queryset(self):
-        objects_list = Post.objects.filter(
-            Q(tags__name__icontains=self.kwargs['slug'])
-        )
-        return objects_list
+        tags_slug = self.kwargs['slug']
+        return Post.objects.filter(tags__slug=tags_slug)
+    
+
+    # def get_queryset(self):
+    #     objects_list = Post.objects.filter(
+    #         Q(tags__name__icontains=self.kwargs['slug'])
+    #     )
+    #     return objects_list

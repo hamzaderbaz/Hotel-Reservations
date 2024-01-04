@@ -26,10 +26,11 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
     path('api-auth/', include('rest_framework.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('', TemplateView.as_view(template_name='base.html'), name='home'),  # This is the URL for the home page
-    # path('accounts/' , include('accounts.urls', namespace='accounts')),
     path('admin/', admin.site.urls),
+
+    path('', TemplateView.as_view(template_name='base.html'), name='home'),  # This is the URL for the home page
+    path('accounts/', include('django.contrib.auth.urls')),
+    # path('accounts/' , include('accounts.urls', namespace='accounts')),
     path('property/' , include('property.urls' , namespace='property')),
     path('blog/' , include('blog.urls' , namespace='blog')),
     path('summernote/', include('django_summernote.urls')),
@@ -38,6 +39,7 @@ urlpatterns = [
     # path('auth/registration/', include('dj_rest_auth.registration.urls'))
 
 ]
+
 
 
 
