@@ -9,6 +9,7 @@ from django.contrib import messages
 from .filters import PropertyFilter
 from django_filters.views import FilterView
 
+from django.db.models import Avg
 
 
 class PropertyList(FilterView):
@@ -16,6 +17,20 @@ class PropertyList(FilterView):
     paginate_by = 3
     filterset_class = PropertyFilter
     template_name = 'property/property_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        properties = context['object_list']
+        reviews = {}
+
+        for property in properties:
+            property_reviews = PropertyReview.objects.filter(property=property)
+            avg_rating = property_reviews.aggregate(avg_rating=Avg('rating'))['avg_rating'] or 0
+            num_of_stars = int(avg_rating)  # Ensure the number of stars is an integer
+            reviews[property.id] = {'avg_rating': avg_rating, 'num_of_stars': range(num_of_stars)}
+        
+        context['property_reviews'] = reviews
+        return context
 
 
 

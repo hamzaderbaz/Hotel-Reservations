@@ -40,13 +40,16 @@
                         <h2>{{object}}</h2>
                         <p class="rate mb-5">
                             <span class="loc"><a href="#"><i class="icon-map"></i>{{object.place}}</a></span>
-                            <span class="star">
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
+                            <p class="rate">
+                                {% for i in "12345"|make_list %}
+                                {% if i <= review.rating %}
                                 <i class="icon-star-o"></i>
-                                8 Rating</span>
+                                {% else %}
+                                <i class="icon-star"></i>
+                                {% endif %}
+                                {% endfor %}
+                                <span>{{ review.rating }}</span>
+                            </p>
                         </p>
                         <p>{{object.description|safe}}</p>
                     </div>
@@ -140,12 +143,14 @@
                                                         href="{{single_property.get_absolute_url}}">{{single_property}}</a>
                                                 </h3>
                                                 <p class="rate">
+                                                    {% for i in "12345"|make_list %}
+                                                    {% if i <= review.rating %}
                                                     <i class="icon-star"></i>
-                                                    <i class="icon-star"></i>
-                                                    <i class="icon-star"></i>
-                                                    <i class="icon-star"></i>
+                                                    {% else %}
                                                     <i class="icon-star-o"></i>
-                                                    <span>8 Rating</span>
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                    <span>{{ review.rating }}</span>
                                                 </p>
                                             </div>
                                             <div class="two">
@@ -153,7 +158,7 @@
                                                     class="price per-price">${{single_property.price}}<br><small>Night</small></span>
                                             </div>
                                         </div>
-                                        <p>{{single_property.description|safe|truncatewords:5}}</p>
+                                        {% comment %} <p>{{single_property.description|safe|truncatewords:5}}</p> {% endcomment %}
                                         <hr>
                                         <p class="bottom-area d-flex">
                                             <span><i class="icon-map-o"></i> {{single_property.place}}</span>

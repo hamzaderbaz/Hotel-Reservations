@@ -28,10 +28,10 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('admin/', admin.site.urls),
 
-    path('', TemplateView.as_view(template_name='base.html'), name='home'),  # This is the URL for the home page
+    path('', TemplateView.as_view(template_name='home.html'), name='home'),  # This is the URL for the home page
     path('accounts/', include('django.contrib.auth.urls')),
     # path('accounts/' , include('accounts.urls', namespace='accounts')),
-    path('property/' , include('property.urls' , namespace='property')),
+    path('hotels/' , include('property.urls' , namespace='property')),
     path('blog/' , include('blog.urls' , namespace='blog')),
     path('summernote/', include('django_summernote.urls')),
     # path('' , include('settings.urls' , namespace='about')),

@@ -27,7 +27,7 @@
 						{% csrf_token %}
 						{% bootstrap_form filter.form %}
 						{% buttons %}
-							<button type="submit" class="btn btn-primary">Search</button>
+						<button type="submit" class="btn btn-primary">Search</button>
 						{% endbuttons %}
 					</form>
 				</div>
@@ -93,20 +93,83 @@
 								<div class="d-flex">
 									<div class="one">
 										<h3><a href="{{property.get_absolute_url}}">{{property}}</a></h3>
-										<p class="rate">
+										{% comment %} <p class="rate">
 											<i class="icon-star"></i>
 											<i class="icon-star"></i>
 											<i class="icon-star"></i>
 											<i class="icon-star"></i>
 											<i class="icon-star-o"></i>
 											<span>8 Rating</span>
+										</p> {% endcomment %}
+
+										{% comment %} {% for star_value in stars %}
+										<p class="rate">
+											{% for i in "12345"|make_list %}
+											{% if i <= star_value %}
+											<i class="icon-star"></i>
+											{% else %}
+											<i class="icon-star-o"></i>
+											{% endif %}
+											{% endfor %}
+											<span>{{ property.star_value }}</span>
 										</p>
+										{% endfor %} {% endcomment %}
+
+										{% comment %} {% for review in property_reviews %} {% endcomment %}
+
+
+										{% comment %} <p class="rate">
+											{% for i in "12345"|make_list %}
+											{% if i <= review.rating %}
+											<i class="icon-star"></i>
+											{% else %}
+											<i class="icon-star-o"></i>
+											{% endif %}
+											{% endfor %}
+											<span>{{ avg_rating }}</span>
+										</p> {% endcomment %}
+
+
+
+										{% comment %} {% for property in object_list %} {% endcomment %}
+										{% comment %} <h3>{{ property.name }}</h3> {% endcomment %}
+										{% comment %} {% with property_reviews.property.id as avg_rating %}
+										{% endcomment %}
+										
+										<p class="rate">
+										{% for property_id, review_data in property_reviews.items %}
+											{% for star in review_data.num_of_stars %}
+												<i class="icon-star"></i>
+											{% endfor %}
+											<span>{{ review_data.num_of_raters }} Rating</span>
+										{% endfor %}
+										</p>
+
+
+
+										{% comment %} {% endwith %} {% endcomment %}
+										{% comment %} {% endfor %} {% endcomment %}
+
+
+
+										{% comment %} {% for star in stars %}
+										<p class="rate">
+											{% for i in "12345"|make_list %}
+											{% if forloop.counter <= star %}
+											<i class="icon-star"></i>
+											{% else %}
+											<i class="icon-star-o"></i>
+											{% endif %}
+											{% endfor %}
+											<span>{{ property.rating.star }}</span>
+										</p>
+										{% endfor %} {% endcomment %}
 									</div>
 									<div class="two">
 										<span class="price per-price">${{property.price}}<br><small>Night</small></span>
 									</div>
 								</div>
-								<p>{{property.description|safe|truncatewords:5}}</p>
+								{% comment %} <p>{{property.description|safe|truncatewords:5}}</p> {% endcomment %}
 								<hr>
 								<p class="bottom-area d-flex">
 									<span><i class="icon-map-o"></i> {{property.place}}</span>
