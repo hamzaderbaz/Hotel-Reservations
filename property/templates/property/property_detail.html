@@ -40,16 +40,24 @@
                         <h2>{{object}}</h2>
                         <p class="rate mb-5">
                             <span class="loc"><a href="#"><i class="icon-map"></i>{{object.place}}</a></span>
-                            <p class="rate">
-                                {% for i in "12345"|make_list %}
-                                {% if i <= review.rating %}
-                                <i class="icon-star-o"></i>
-                                {% else %}
+                            <span class="star">
                                 <i class="icon-star"></i>
-                                {% endif %}
-                                {% endfor %}
-                                <span>{{ review.rating }}</span>
-                            </p>
+                                <i class="icon-star"></i>
+                                <i class="icon-star"></i>
+                                <i class="icon-star"></i>
+                                <i class="icon-star-o"></i>
+                                8 Rating</span>
+
+                                {% comment %} <p class="rate">
+                                    {% for i in "12345"|make_list %}
+                                    {% if i <= review.rating %}
+                                    <i class="icon-star-o"></i>
+                                    {% else %}
+                                    <i class="icon-star"></i>
+                                    {% endif %}
+                                    {% endfor %}
+                                    <span>{{ review.rating }}</span>
+                                </p> {% endcomment %}
                         </p>
                         <p>{{object.description|safe}}</p>
                     </div>

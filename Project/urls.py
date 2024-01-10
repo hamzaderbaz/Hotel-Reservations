@@ -16,6 +16,7 @@ Including another URLconf
 """
 
 
+from django import views
 from django.urls import path , include
 from django.contrib import admin 
 from django.conf import settings
@@ -28,15 +29,27 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('admin/', admin.site.urls),
 
+
+    # apps
+
     path('', TemplateView.as_view(template_name='home.html'), name='home'),  # This is the URL for the home page
     path('accounts/', include('django.contrib.auth.urls')),
-    # path('accounts/' , include('accounts.urls', namespace='accounts')),
     path('hotels/' , include('property.urls' , namespace='property')),
     path('blog/' , include('blog.urls' , namespace='blog')),
     path('summernote/', include('django_summernote.urls')),
+    
+
+
+    # path('rate/<int:post_id>/<int:rating>/', views.rate),
+    # path('ratings/', include('star_ratings.urls', namespace='ratings')),
+
+
+
     # path('' , include('settings.urls' , namespace='about')),
     # path('auth/', include('dj_rest_auth.urls')),
     # path('auth/registration/', include('dj_rest_auth.registration.urls'))
+
+    # path('accounts/' , include('accounts.urls', namespace='accounts')),
 
 ]
 

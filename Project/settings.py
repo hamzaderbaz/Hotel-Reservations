@@ -42,7 +42,7 @@ INSTALLED_APPS = [
 
     #my apps
     'accounts', 'property', 'settings', 'blog', 'about', 
-    'django_summernote', 'rest_framework', "bootstrap4", 'django_bootstrap5', 'django_filters', 'taggit', 
+    'django_summernote', 'rest_framework', "bootstrap4", 'django_bootstrap5', 'django_filters', 'taggit', 'star_ratings',
     
 ]
 
