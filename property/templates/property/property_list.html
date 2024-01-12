@@ -97,14 +97,14 @@
 								<div class="d-flex">
 									<div class="one">
 										<h3><a href="{{property.get_absolute_url}}">{{property}}</a></h3>
-										{% comment %} <p class="rate">
+										<p class="rate">
 											<i class="icon-star"></i>
 											<i class="icon-star"></i>
 											<i class="icon-star"></i>
 											<i class="icon-star"></i>
 											<i class="icon-star-o"></i>
 											<span>8 Rating</span>
-										</p> {% endcomment %}
+										</p>
 
 										{% comment %} {% for star_value in stars %}
 										<p class="rate">
@@ -123,14 +123,14 @@
 
 
 
-										<p class="rate">
+										{% comment %} <p class="rate">
 											{% for property_id, review_data in property_reviews.items %}
 											{% for star in review_data.num_of_stars %}
 											<i class="icon-star"></i>
 											{% endfor %}
 											<span>{{ review_data.num_of_raters }} Rating</span>
 											{% endfor %}
-										</p>
+										</p> {% endcomment %}
 
 
 										{% comment %} <p class="rate">
