@@ -34,6 +34,7 @@ urlpatterns = [
 
     path('', TemplateView.as_view(template_name='home.html'), name='home'),  # This is the URL for the home page
     path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/' , include('accounts.urls', namespace='accounts')),
     path('hotels/' , include('property.urls' , namespace='property')),
     path('blog/' , include('blog.urls' , namespace='blog')),
     path('summernote/', include('django_summernote.urls')),
@@ -49,7 +50,6 @@ urlpatterns = [
     # path('auth/', include('dj_rest_auth.urls')),
     # path('auth/registration/', include('dj_rest_auth.registration.urls'))
 
-    # path('accounts/' , include('accounts.urls', namespace='accounts')),
 
 ]
 
