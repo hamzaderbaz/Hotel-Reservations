@@ -33,7 +33,7 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
             <div class="container">
-                <a class="navbar-brand" href="{% url 'home' %}">Booking.com</a>
+                <a class="navbar-brand mr-auto" href="{% url 'home' %}">Booking.com</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                     aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="oi oi-menu"></span> Menu
@@ -59,10 +59,72 @@
                         <li class="nav-item active">
                             <a href="about.html" class="nav-link">About</a>
                         </li>
-                        <li class="nav-item cta">
-                            <a href="contact.html" class="nav-link"><span>Add listing</span></a>
-                        </li>
+
+
                     </ul>
+
+
+
+                    <div class="navbar-nav ml-auto">
+                        {% if request.user.is_authenticated %}
+                        {% comment %} <li class="nav-item cta">
+                            <a href="contact.html" class="nav-link"><span>Add listing</span></a>
+                        </li> {% endcomment %}
+
+                        <div class="nav-item cta">
+                            <a class="boxed-btn3 w-70" href="{% url 'property:property_new' %}">Add Listing</a>
+                        </div>
+
+                        <div class="nav-item cta">
+                            <a class="boxed-btn3" href="{% url 'accounts:profile' %}">Profile</a>
+                        </div>
+
+                        <div class="nav-item cta">
+                            <a class="boxed-btn3" href="{% url 'accounts:logout' %}">Logout</a>
+                        </div>
+
+                        {% comment %} <li class="nav-item cta"><a href="{% url 'property:property_new' %}"
+                                class="nav-link"><span>{% trans 'Add Listing' %}</span></a></li>
+
+
+                        <li class="nav-item cta"><a href="{% url 'accounts:profile' %}"
+                                class="nav-link"><span>{% trans 'Profile' %}
+                                </span></a></li>
+
+                        <li class="nav-item cta"><a href="{% url 'accounts:logout' %}"
+                                class="nav-link"><span>{% trans 'Logout' %}</span></a>
+                        </li> {% endcomment %}
+
+                        {% else %}
+
+                        {% comment %} <div class="col-md-4 mr-auto">
+                            <a class="boxed-btn3 cta" href="{% url 'login' %}">Login</a>
+                        </div>
+
+                        <div class="col-md-4 ml-auto">
+                            <a class="boxed-btn3 cta" href="{% url 'accounts:signup' %}">Signup</a>
+                        </div> {% endcomment %}
+
+                        <div class="nav-item cta">
+                            <a class="boxed-btn3" href="{% url 'login' %}">Login</a>
+                        </div>
+
+                        <div class="nav-item cta">
+                            <a class="boxed-btn3" href="{% url 'accounts:signup' %}">Signup</a>
+                        </div>
+
+
+
+
+
+                        {% comment %} <li class="nav-item cta">
+                            <a href="{% url 'login' %}" class="nav-link"><span>{% trans "Login" %}</span></a>
+                        </li>
+                        <li class="nav-item cta"><a href="{% url 'accounts:signup' %}"
+                                class="nav-link"><span>{% trans 'Signup' %}</span></a></li> {% endcomment %}
+
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </nav>

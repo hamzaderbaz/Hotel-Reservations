@@ -10,6 +10,8 @@ from django.contrib import messages
 from .filters import PropertyFilter
 from django_filters.views import FilterView
 
+
+
 from django.db.models import Avg
 
 
@@ -66,3 +68,29 @@ class PropertyDetail(FormMixin , DetailView):
             myform.save()
             messages.success(request, 'Your Reservation Confirmed ')
             return redirect(reverse('property:property_detail' , kwargs={'slug':self.get_object().slug}))
+        
+
+class NewProperty(CreateView):
+    model = Property
+    fields = ['title','description','price','place','image', 'category']
+
+
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        if form.is_valid():
+            myform = form.save(commit=False)
+            myform.owner = request.user
+            myform.save()
+            messages.success(request, 'Successfully Added Your Property')
+
+            ### send gmail message
+
+            return redirect(reverse('property:property_list'))
+
+
+
+
+def property_by_category(request,category):
+    my_category = Category.objects.get(name=category)
+    property_categroy = Property.objects.filter(category=my_category)
+    return render(request , 'property/property_by_category.html' , {'property_categroy':property_categroy , 'my_category':my_category})
