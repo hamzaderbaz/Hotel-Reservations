@@ -64,8 +64,10 @@ def logout(request):
     auth_logout(request)
     return render(request, 'registration/logged_out.html') 
 
+
+
 def my_reservation(request):
-    user_reservation = PropertyBook.objects.filter(name=request.user)
+    user_reservation = PropertyBook.objects.filter(user=request.user)
     return render(request,'profile/my_reservation.html' , {'user_reservation':user_reservation})
 
 

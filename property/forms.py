@@ -1,7 +1,12 @@
 from django import forms
-from .models import PropertyBook , PropertyReview
+from .models import Property, PropertyBook , PropertyReview
 
 
+class PropertyForm(forms.ModelForm):
+    class Meta:
+        model = Property
+        fields = ['name', 'image', 'price','description','place','category']
+        # fields = '__all__'
 
 class PropertyBookForm(forms.ModelForm):
     # date_from = forms.DateField(widget= forms.DateInput(attrs={'id':'checkin_date'}))
@@ -19,3 +24,5 @@ class PropertyReviewForm(forms.ModelForm):
     class Meta:
         model = PropertyReview
         fields = ['rating','feedback']
+
+

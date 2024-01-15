@@ -8,7 +8,7 @@ from django.utils import timezone
 
 
 class Property(models.Model):
-    # owner = models.ForeignKey(User, related_name='property_owner', on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, related_name='property_owner', on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     image = models.ImageField(upload_to='propery/')
     price = models.IntegerField(default=0)

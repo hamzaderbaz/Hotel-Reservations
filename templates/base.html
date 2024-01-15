@@ -71,7 +71,7 @@
                             <a href="contact.html" class="nav-link"><span>Add listing</span></a>
                         </li> {% endcomment %}
 
-                        <div class="nav-item cta">
+                        {% comment %} <div class="nav-item cta">
                             <a class="boxed-btn3 w-70" href="{% url 'property:property_new' %}">Add Listing</a>
                         </div>
 
@@ -81,9 +81,9 @@
 
                         <div class="nav-item cta">
                             <a class="boxed-btn3" href="{% url 'accounts:logout' %}">Logout</a>
-                        </div>
+                        </div> {% endcomment %}
 
-                        {% comment %} <li class="nav-item cta"><a href="{% url 'property:property_new' %}"
+                        <li class="nav-item cta"><a href="{% url 'property:property_new' %}"
                                 class="nav-link"><span>{% trans 'Add Listing' %}</span></a></li>
 
 
@@ -93,7 +93,7 @@
 
                         <li class="nav-item cta"><a href="{% url 'accounts:logout' %}"
                                 class="nav-link"><span>{% trans 'Logout' %}</span></a>
-                        </li> {% endcomment %}
+                        </li>
 
                         {% else %}
 
@@ -106,11 +106,11 @@
                         </div> {% endcomment %}
 
                         <div class="nav-item cta">
-                            <a class="boxed-btn3" href="{% url 'login' %}">Login</a>
+                            <a class="boxed-btn3" href="{% url 'login' %}">{% trans 'Login' %}</a>
                         </div>
 
                         <div class="nav-item cta">
-                            <a class="boxed-btn3" href="{% url 'accounts:signup' %}">Signup</a>
+                            <a class="boxed-btn3" href="{% url 'accounts:signup' %}">{% trans 'Signup' %}</a>
                         </div>
 
 
