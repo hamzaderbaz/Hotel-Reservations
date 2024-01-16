@@ -48,19 +48,21 @@
                                 <i class="icon-star-o"></i>
                                 8 Rating</span>
 
-                                {% comment %} <p class="rate">
-                                    {% for i in "12345"|make_list %}
-                                    {% if i <= review.rating %}
-                                    <i class="icon-star-o"></i>
-                                    {% else %}
-                                    <i class="icon-star"></i>
-                                    {% endif %}
-                                    {% endfor %}
-                                    <span>{{ review.rating }}</span>
-                                </p> {% endcomment %}
+                            {% comment %} <p class="rate">
+                                {% for i in "12345"|make_list %}
+                                {% if i <= review.rating %}
+                                <i class="icon-star-o"></i>
+                                {% else %}
+                                <i class="icon-star"></i>
+                                {% endif %}
+                                {% endfor %}
+                                <span>{{ review.rating }}</span>
+                            </p> {% endcomment %}
                         </p>
                         <p>{{object.description|safe}}</p>
                     </div>
+
+
                     <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
                         <h4 class="mb-4">Take A Tour</h4>
                         <div class="block-16">
@@ -72,13 +74,24 @@
                         </div>
                     </div>
 
+
+
+                    <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
+                        {% if property.check_avablity == 'Avialable' %}
+                        <h3>The Room is Available, Book now</h3>
+                        {% else %}
+                        <h3>The Room is being booked, The Room {{property.check_avablity}}</h3>
+                        {% endif %}
+                    </div>
+
+
                     <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
                         <h4 class="mb-5">Check Availability &amp; Booking</h4>
                         <form method="post" class="form">
                             {% csrf_token %}
                             {% bootstrap_form form %}
                             {% buttons %}
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                             {% endbuttons %}
                         </form>
                     </div>
@@ -166,10 +179,11 @@
                                                     class="price per-price">${{single_property.price}}<br><small>Night</small></span>
                                             </div>
                                         </div>
-                                        {% comment %} <p>{{single_property.description|safe|truncatewords:5}}</p> {% endcomment %}
+                                        {% comment %} <p>{{single_property.description|safe|truncatewords:5}}</p>
+                                        {% endcomment %}
                                         <hr>
                                         <p class="bottom-area d-flex">
-                                            <span><i class="icon-map-o"></i> {{single_property.place}}</span>
+                                            <span><i class=""></i> {{single_property.place}}</span>
                                             <span class="ml-auto"><a href="{{single_property.get_absolute_url}}">Book
                                                     Now</a></span>
                                         </p>

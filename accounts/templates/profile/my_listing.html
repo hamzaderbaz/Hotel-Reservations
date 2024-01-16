@@ -11,7 +11,7 @@
 		<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"
 			data-scrollax-parent="true">
 			<div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-				<h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">My Reservation</h1>
+				<h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">My Listing</h1>
 			</div>
 		</div>
 	</div>
@@ -29,7 +29,7 @@
 							<div class="destination">
 								<a href="{{property.get_absolute_url}}"
 									class="img img-2 d-flex justify-content-center align-items-center"
-									style="background-image: url('{{property.property.image.url}}');">
+									style="background-image: url('{{property.image.url}}');">
 									<div class="icon d-flex justify-content-center align-items-center">
 										<span class="icon-search2"></span>
 									</div>
@@ -37,7 +37,7 @@
 								<div class="text p-3">
 									<div class="d-flex">
 										<div class="one">
-											<h3><a href="{{property.property.get_absolute_url}}">{{property}}</a></h3>
+											<h3><a href="{{property.get_absolute_url}}">{{property}}</a></h3>
 											<p class="rate">
 												<i class="icon-star"></i>
 												<i class="icon-star"></i>
@@ -48,15 +48,15 @@
 											</p>
 										</div>
 										<div class="two">
-											<span class="price per-price">${{property.property.price}}<br><small>/night</small></span>
+											<span class="price per-price">${{property.price}}<br><small>/night</small></span>
 										</div>
 									</div>
 									{% comment %} <p>{{property.property.description|safe|truncatewords:5}}</p> {% endcomment %}
 									<hr>
 									<p class="bottom-area d-flex">
-										<span><i class=""></i> {{property.property.place}}</span>
+										<span><i class=""></i>{{property.place}}</span>
 											
-										<span class="ml-auto"><a href="{% url 'accounts:add_feedback' property.property.slug %}">Add Review</a></span>
+										{% comment %} <span class="ml-auto"><a href="{% url 'accounts:add_feedback' property.slug %}">Add Review</a></span> {% endcomment %}
 									</p>
 								</div>
 							</div>

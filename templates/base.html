@@ -83,7 +83,7 @@
                             <a class="boxed-btn3" href="{% url 'accounts:logout' %}">Logout</a>
                         </div> {% endcomment %}
 
-                        <li class="nav-item cta"><a href="{% url 'property:property_new' %}"
+                        <li class="nav-item cta"><a href="{% url 'accounts:property_new' %}"
                                 class="nav-link"><span>{% trans 'Add Listing' %}</span></a></li>
 
 
@@ -113,15 +113,11 @@
                             <a class="boxed-btn3" href="{% url 'accounts:signup' %}">{% trans 'Signup' %}</a>
                         </div>
 
+                        {% comment %} <div class="d-flex ms-leg-4">
+                            <a class="btn btn-secondary-outline" href="{% url 'login' %}">{% trans 'Login' %}</a>
+                            <a class="btn btn-warning ms-3" href="{% url 'accounts:signup' %}">{% trans 'Signup' %}</a>
+                        </div> {% endcomment %}
 
-
-
-
-                        {% comment %} <li class="nav-item cta">
-                            <a href="{% url 'login' %}" class="nav-link"><span>{% trans "Login" %}</span></a>
-                        </li>
-                        <li class="nav-item cta"><a href="{% url 'accounts:signup' %}"
-                                class="nav-link"><span>{% trans 'Signup' %}</span></a></li> {% endcomment %}
 
                         {% endif %}
                     </div>

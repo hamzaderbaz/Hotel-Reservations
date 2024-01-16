@@ -52,9 +52,9 @@ class PropertyDetail(FormMixin , DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # context["property_images"] = PropertyImages.objects.filter(property=self.get_object().id)
+        context["property_images"] = PropertyImages.objects.filter(property=self.get_object().id)
         context['get_related'] = Property.objects.filter(category=self.get_object().category)[:3]
-        # context['review_count'] = PropertyReview.objects.filter(property=self.get_object()).count()
+        context['review_count'] = PropertyReview.objects.filter(property=self.get_object()).count()
 
         return context
 
@@ -72,8 +72,7 @@ class PropertyDetail(FormMixin , DetailView):
 
 class NewProperty(CreateView):
     model = Property
-    fields = ['title','description','price','place','image', 'category']
-
+    fields = ['name','description','price','place','image', 'category']
 
     def post(self, request, *args, **kwargs):
         form = self.get_form()
@@ -83,9 +82,9 @@ class NewProperty(CreateView):
             myform.save()
             messages.success(request, 'Successfully Added Your Property')
 
-            ### send gmail message
-
-            return redirect(reverse('property:property_list'))
+            return redirect(reverse('accounts:property_new'))
+            # return render(request,'property/property_new.html' , {'form':form , 'property':property})
+        
 
 
 

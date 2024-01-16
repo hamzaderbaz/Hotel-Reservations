@@ -9,8 +9,8 @@ class PropertyForm(forms.ModelForm):
         # fields = '__all__'
 
 class PropertyBookForm(forms.ModelForm):
-    # date_from = forms.DateField(widget= forms.DateInput(attrs={'id':'checkin_date'}))
-    # date_to = forms.DateField(widget= forms.DateInput(attrs={'id':'checkin_date'}))
+    date_from = forms.DateField(widget= forms.DateInput(attrs={'id':'checkin_date'}))
+    date_to = forms.DateField(widget= forms.DateInput(attrs={'id':'checkin_date'}))
     class Meta:
         model = PropertyBook
 

@@ -70,6 +70,10 @@ def my_reservation(request):
     user_reservation = PropertyBook.objects.filter(user=request.user)
     return render(request,'profile/my_reservation.html' , {'user_reservation':user_reservation})
 
+def my_listing(request):
+    user_reservation = Property.objects.filter(owner=request.user)
+    return render(request,'profile/my_listing.html' , {'user_reservation':user_reservation})
+
 
 def add_feedback(request , slug):
     property = get_object_or_404(Property , slug=slug)
