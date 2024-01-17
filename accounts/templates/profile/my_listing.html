@@ -55,8 +55,14 @@
 									<hr>
 									<p class="bottom-area d-flex">
 										<span><i class=""></i>{{property.place}}</span>
-											
-										{% comment %} <span class="ml-auto"><a href="{% url 'accounts:add_feedback' property.slug %}">Add Review</a></span> {% endcomment %}
+										
+										<span class="ml-auto"><a href="{% url 'accounts:delete_property' property.id %}">Delete</a><span>
+
+										{% comment %} {% if user_reservation.exists %}
+										{% with property=user_reservation.first %}
+										{% endwith %}
+										{% endif %}		 {% endcomment %}
+										
 									</p>
 								</div>
 							</div>

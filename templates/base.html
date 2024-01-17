@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <link rel="manifest" href="site.webmanifest">
-        <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/booking.png' %}" />
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/booking.svg' %}" />
         {% comment %}
         <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/bg_1.co' %}" /> {% endcomment %}
 
@@ -84,14 +84,14 @@
                         </div> {% endcomment %}
 
                         <li class="nav-item cta"><a href="{% url 'accounts:property_new' %}"
-                                class="nav-link"><span>{% trans 'Add Listing' %}</span></a></li>
+                                class="nav-link"><span>{% trans 'Add Property' %}</span></a></li>
 
 
-                        <li class="nav-item cta"><a href="{% url 'accounts:profile' %}"
+                        <li class="nav-item cta"><a href="{% url 'profile' %}"
                                 class="nav-link"><span>{% trans 'Profile' %}
                                 </span></a></li>
 
-                        <li class="nav-item cta"><a href="{% url 'accounts:logout' %}"
+                        <li class="nav-item cta"><a href="{% url 'logout' %}"
                                 class="nav-link"><span>{% trans 'Logout' %}</span></a>
                         </li>
 
@@ -110,7 +110,7 @@
                         </div>
 
                         <div class="nav-item cta">
-                            <a class="boxed-btn3" href="{% url 'accounts:signup' %}">{% trans 'Signup' %}</a>
+                            <a class="boxed-btn3" href="{% url 'signup' %}">{% trans 'Signup' %}</a>
                         </div>
 
                         {% comment %} <div class="d-flex ms-leg-4">

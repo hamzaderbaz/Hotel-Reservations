@@ -16,6 +16,8 @@ class Property(models.Model):
     place = models.ForeignKey('Place', related_name='property_place', on_delete=models.CASCADE)
     category = models.ForeignKey('Category', related_name='property_category', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now=True)
+    is_deleted = models.BooleanField(default=False)
+
     slug = models.SlugField(blank=True, null=True)
     
     def save(self, *args, **kwargs):

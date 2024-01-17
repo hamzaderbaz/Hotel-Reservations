@@ -1,0 +1,44 @@
+{% comment %} {% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block body %}
+
+
+<div class="hero-wrap js-fullheight" style="background-image: url({% static 'images/bg_3.jpg' %});">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"
+            data-scrollax-parent="true">
+            <div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+                <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">My Listing</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <h2>Confirm Deletion</h2>
+    <p>Are you sure you want to delete "{{ property.name }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+    </form>
+    <a href="{% url 'accounts:my_listing' %}">Cancel</a>
+</div>
+{% endblock body %} {% endcomment %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Property</title>
+</head>
+<body>
+    <h2>Confirm Deletion</h2>
+    <p>Are you sure you want to delete "{{ property.name }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+    </form>
+    <a href="{% url 'accounts:my_listing' %}">Cancel</a>
+</body>
+</html>

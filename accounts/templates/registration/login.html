@@ -3,8 +3,9 @@
 {% load bootstrap4 %}
 {% block body %}
 
-{% comment %} <div class="ilstration_img wow fadeInRight d-none d-lg-block text-right" data-wow-duration="1s" data-wow-delay=".2s">
-    <img src="{% static 'images/bg_3.jpg' %}" alt="" />
+{% comment %} <div class="ilstration_img wow fadeInRight d-none d-lg-block text-right" data-wow-duration="1s"
+	data-wow-delay=".2s">
+	<img src="{% static 'images/bg_3.jpg' %}" alt="" />
 </div> {% endcomment %}
 
 <div class="hero-wrap js-fullheight" style="background-image: url({% static 'images/bg_2.jpg' %});">
@@ -22,68 +23,94 @@
 <div class"container">
 	<div class="row">
 		<div class="col-md-4 mx-auto mt-5 mb-5">
-			<h3> Login</h3>
-			<form method="POST">
+			<h3>Login</h3>
+			<form method="post" action="{% url 'login' %}">
 				{% csrf_token %}
 				{% bootstrap_form form %}
 				{% buttons %}
 				<button type="submit" class="btn btn-primary w-100">Login</button>
 				{% endbuttons %}
 			</form>
-            <p><a href="{% url 'password_reset' %}">Forgot Password?</a></p>
+			<p><a href="{% url 'password_reset' %}">Forgot Password?</a></p>
 		</div>
 	</div>
 </div>
 
-{% comment %} <div class"container">
-	<div class="row">
-		<div class="col-md-4 mx-auto mt-5 mb-5">
-			<h3>Login</h3>
-			<form method="post">
-				{% csrf_token %}
-				{% bootstrap_form form %}
-				<input type="submit" value="login" class="btn btn-primary w-100" />
-			</form>
-            <p><a href="{% url 'password_reset' %}">Forgot Password?</a></p>
-		</div>
-	</div>
-</div> {% endcomment %}
 
 {% endblock  %}
 
 
 
 
-{% comment %} <style>
-    .background {
-        background-image: url('{% static 'images/bg_2.jpg' %}');
-        background-size: cover;
-        background-position: center;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
 
-    .container {
-        background-color: rgba(255, 255, 255, 0); /* Add a semi-transparent white background to improve readability */
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} <style>
+	.background {
+		background-image: url('{% static 'images/bg_2.jpg' %}');
+		background-size: cover;
+		background-position: center;
+		height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.container {
+		background-color: rgba(255, 255, 255, 0);
+		/* Add a semi-transparent white background to improve readability */
+	}
 </style>
 
 <div class="background">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 mx-auto mt-5 mb-5">
-                <h3>Login</h3>
-                <form method="POST">
-                    {% csrf_token %}
-                    {% bootstrap_form form %}
-                    {% buttons %}
-                        <button type="submit" class="btn btn-primary py-3">Login</button>
-                    {% endbuttons %}
-                </form>
-                <p><a href="{% url 'password_reset' %}">Forgot Password?</a></p>
-            </div>
-        </div>
-    </div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 mx-auto mt-5 mb-5">
+				<h3>Login</h3>
+				<form method="POST">
+					{% csrf_token %}
+					{% bootstrap_form form %}
+					{% buttons %}
+					<button type="submit" class="btn btn-primary py-3">Login</button>
+					{% endbuttons %}
+				</form>
+				<p><a href="{% url 'password_reset' %}">Forgot Password?</a></p>
+			</div>
+		</div>
+	</div>
 </div> {% endcomment %}

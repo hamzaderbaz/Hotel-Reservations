@@ -1,27 +1,12 @@
-"""
-URL configuration for Project project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-
-
 from django import views
 from django.urls import path , include
 from django.contrib import admin 
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
+
+# from job import views
+from accounts import views
 
 
 urlpatterns = [
@@ -39,6 +24,18 @@ urlpatterns = [
     path('blog/' , include('blog.urls' , namespace='blog')),
     path('summernote/', include('django_summernote.urls')),
     
+
+
+    # URL of registrations
+    path('login/', views.login, name='login'),
+    path('signup/', views.signup, name='signup'),
+    path('logout/', views.logout, name='logout'),
+
+
+    # URL of accounts app
+    path('profile/', views.profile, name='profile'),
+    path('edit-profile/', views.profile_edit, name='profile_edit'),
+
 
 
     # path('rate/<int:post_id>/<int:rating>/', views.rate),
@@ -66,4 +63,25 @@ if settings.DEBUG:
 
 
 # urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
+# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    
+
+
+
+    """
+URL configuration for Project project.
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/4.2/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+

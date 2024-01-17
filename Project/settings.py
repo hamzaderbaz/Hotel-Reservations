@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #my apps
-    'property', 'settings', 'blog', 'about', #'contact',
-    'django_summernote', 'rest_framework', "bootstrap4", 'django_bootstrap5', 'django_filters', 'taggit', 'star_ratings',
+    'home', 'property', 'blog', 'contact', 'about', 'settings',
+    'django_summernote', 'rest_framework', "bootstrap4", 'django_bootstrap5', 'django_filters', 'taggit', 'star_ratings', #'reports',
     
 ]
 
@@ -63,7 +63,7 @@ ROOT_URLCONF = 'Project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [BASE_DIR, 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
