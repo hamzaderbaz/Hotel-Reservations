@@ -54,9 +54,9 @@
 									{% comment %} <p>{{property.property.description|safe|truncatewords:5}}</p> {% endcomment %}
 									<hr>
 									<p class="bottom-area d-flex">
-										<span><i class=""></i>{{property.place}}</span>
+										<span></i>{{property.place}}</span>
 										
-										<span class="ml-auto"><a href="{% url 'accounts:delete_property' property.id %}">Delete</a><span>
+										<span class="ml-auto"><a href="{% url 'delete_property' property.id %}">Delete</a><span>
 
 										{% comment %} {% if user_reservation.exists %}
 										{% with property=user_reservation.first %}

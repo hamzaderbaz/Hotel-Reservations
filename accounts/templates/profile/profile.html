@@ -15,17 +15,30 @@
 <div class="row">
 	<div class="container">
 		<div class="col-md-6 mx-auto mt-5 mb-5">
-
-			{{profile.user.username}}
-			{{profile.user.email}}
-			{{profile.phone_number}}
-			{{profile.address}}
-
-			<h5><a href="{% url 'profile_edit' %}">Edit Profile</a></h5>
-			<h5><a href="{% url 'password_change' %}">Change Password</a></h5>
-			<h5><a href="{% url 'accounts:my_reservation' %}">My Reservation</a></h5>
-			<h5><a href="{% url 'accounts:my_listing' %}">My Listing</a></h5>
-			
+			<div class="profile_sumary">
+				<div class="summery_header">
+					<h3>Profile Summery</h3>
+				</div>
+				<div class="profile_content">
+					<ul>
+						{% comment %} <li>Name: <span>{{profile}}</span></li> {% endcomment %}
+						<li>User Name: <span>{{user.username}}</span></li>
+						{% comment %} <li>Your Name: <span>{{profile.name}}</span></li> {% endcomment %}
+						{% comment %} <li>First name: <span>{{profile.first_name}}</span></li> {% endcomment %}
+						{% comment %} <li>Last name: <span>{{profile.last_name}}</span></li> {% endcomment %}
+						<li>Email: <span>{{profile.email}}</span></li>
+						<li>Image: <span>{{profile.image}}</span></li>
+						<li>Phone: <span>{{profile.phone_number}}</span></li>
+						<li>Addres: <span>{{profile.address}}</span></li>
+					</ul>
+				</div>
+				<div class="p-3">
+					{% comment %} <a class="boxed-btn3 w-100" href="{% url 'profile_edit' %}">Edit Profile</a>
+					{% endcomment %}
+					<a class="btn btn-primary w-100" href="{% url 'profile_edit' %}">Edit Profile</a>
+					{% comment %} <h5><a href="{% url 'profile_edit' %}">Save</a></h5> {% endcomment %}
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

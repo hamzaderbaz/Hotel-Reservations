@@ -60,6 +60,7 @@ def profile(request):
 
 def profile_edit(request):
     profile = Profile.objects.get(user = request.user)
+    # profile = get_object_or_404(Profile, user=request.user)
     if request.method == 'POST':
         user_form = UserForm(request.POST , instance=request.user)
         profile_form = ProfileForm(request.POST , request.FILES , instance=profile)
@@ -70,7 +71,7 @@ def profile_edit(request):
             my_form.user = request.user
             my_form.save()
             messages.success(request, 'Profile details updated.')
-            return redirect(reverse('accounts:profile'))
+            return redirect(reverse('profile'))
     
     else:
         user_form = UserForm(instance=request.user)
@@ -80,6 +81,7 @@ def profile_edit(request):
         'user_form' : user_form , 
         'profile_form' : profile_form
     })
+
 
 def logout(request):
     auth_logout(request)
@@ -103,9 +105,10 @@ def delete_property(request, property_id):
         # Soft delete logic
         property_to_delete.is_deleted = True
         property_to_delete.save()
-        return redirect('accounts:my_listing')  # Redirect to your property list view
+        return redirect('my_listing')  # Redirect to your property list view
 
-    return render(request, 'delete_property_confirm.html', {'property': property_to_delete})
+    return render(request, 'accounts/delete_property_confirm.html', {'property': property_to_delete})
+
 
 
 

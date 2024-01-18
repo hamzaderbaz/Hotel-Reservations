@@ -54,9 +54,9 @@
 									{% comment %} <p>{{property.property.description|safe|truncatewords:5}}</p> {% endcomment %}
 									<hr>
 									<p class="bottom-area d-flex">
-										<span><i class=""></i> {{property.property.place}}</span>
+										<span></i>{{property.property.place}}</span>
 											
-										<span class="ml-auto"><a href="{% url 'accounts:add_feedback' property.property.slug %}">Add Review</a></span>
+										<span class="ml-auto"><a href="{% url 'add_feedback' property.property.slug %}">Add Review</a></span>
 									</p>
 								</div>
 							</div>

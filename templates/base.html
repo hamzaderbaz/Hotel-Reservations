@@ -10,8 +10,6 @@
 
         <link rel="manifest" href="site.webmanifest">
         <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/booking.svg' %}" />
-        {% comment %}
-        <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/bg_1.co' %}" /> {% endcomment %}
 
 
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
@@ -54,81 +52,48 @@
                             <a href="{% url 'blog:post_list' %}" class="nav-link">Blog</a>
                         </li>
                         <li class="nav-item active">
-                            <a href="contact.html" class="nav-link"><span>Contact</span></a>
+                            <a href="{% url 'contact:contact' %}" class="nav-link"><span>Contact</span></a>
                         </li>
                         <li class="nav-item active">
                             <a href="about.html" class="nav-link">About</a>
                         </li>
-
-
                     </ul>
-
-
-
+                    
                     <div class="navbar-nav ml-auto">
                         {% if request.user.is_authenticated %}
-                        {% comment %} <li class="nav-item cta">
-                            <a href="contact.html" class="nav-link"><span>Add listing</span></a>
-                        </li> {% endcomment %}
-
-                        {% comment %} <div class="nav-item cta">
-                            <a class="boxed-btn3 w-70" href="{% url 'property:property_new' %}">Add Listing</a>
-                        </div>
-
-                        <div class="nav-item cta">
-                            <a class="boxed-btn3" href="{% url 'accounts:profile' %}">Profile</a>
-                        </div>
-
-                        <div class="nav-item cta">
-                            <a class="boxed-btn3" href="{% url 'accounts:logout' %}">Logout</a>
-                        </div> {% endcomment %}
-
-                        <li class="nav-item cta"><a href="{% url 'accounts:property_new' %}"
-                                class="nav-link"><span>{% trans 'Add Property' %}</span></a></li>
-
-
-                        <li class="nav-item cta"><a href="{% url 'profile' %}"
-                                class="nav-link"><span>{% trans 'Profile' %}
-                                </span></a></li>
-
-                        <li class="nav-item cta"><a href="{% url 'logout' %}"
-                                class="nav-link"><span>{% trans 'Logout' %}</span></a>
-                        </li>
-
+                            <li class="nav-item cta">
+                                <a href="{% url 'property_new' %}" class="nav-link"><span>{% trans 'Add Property' %}</span></a>
+                            </li>
+                            <li class="nav-item dropdown cta">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {% trans 'Profile' %}
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{% url 'profile' %}">{% trans 'View Profile' %}</a>
+                                    {% comment %} <a class="dropdown-item" href="{% url 'settings' %}">{% trans 'Settings' %}</a> {% endcomment %}
+                                    <a class="dropdown-item" href="{% url 'password_change' %}">{% trans 'Change Password' %}</a>
+                                    <a class="dropdown-item" href="{% url 'my_reservation' %}">{% trans 'My Reservation' %}</a>
+                                    <a class="dropdown-item" href="{% url 'my_listing' %}">{% trans 'My Listing' %}</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{% url 'logout' %}">{% trans 'Logout' %}</a>
+                                </div>
+                            </li>
                         {% else %}
-
-                        {% comment %} <div class="col-md-4 mr-auto">
-                            <a class="boxed-btn3 cta" href="{% url 'login' %}">Login</a>
-                        </div>
-
-                        <div class="col-md-4 ml-auto">
-                            <a class="boxed-btn3 cta" href="{% url 'accounts:signup' %}">Signup</a>
-                        </div> {% endcomment %}
-
-                        <div class="nav-item cta">
-                            <a class="boxed-btn3" href="{% url 'login' %}">{% trans 'Login' %}</a>
-                        </div>
-
-                        <div class="nav-item cta">
-                            <a class="boxed-btn3" href="{% url 'signup' %}">{% trans 'Signup' %}</a>
-                        </div>
-
-                        {% comment %} <div class="d-flex ms-leg-4">
-                            <a class="btn btn-secondary-outline" href="{% url 'login' %}">{% trans 'Login' %}</a>
-                            <a class="btn btn-warning ms-3" href="{% url 'accounts:signup' %}">{% trans 'Signup' %}</a>
-                        </div> {% endcomment %}
-
-
+                            <div class="nav-item cta">
+                                <a class="boxed-btn3" href="{% url 'login' %}">{% trans 'Login' %}</a>
+                            </div>
+                            <div class="nav-item cta">
+                                <a class="boxed-btn3" href="{% url 'signup' %}">{% trans 'Signup' %}</a>
+                            </div>
                         {% endif %}
                     </div>
+ 
                 </div>
             </div>
         </nav>
         <!-- END nav -->
 
         {% block body %}
-
-
 
 
         {% endblock body %}

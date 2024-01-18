@@ -1,4 +1,4 @@
-{% comment %} {% extends 'base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 {% load bootstrap4 %}
 {% block body %}
@@ -19,15 +19,19 @@
 <div>
     <h2>Confirm Deletion</h2>
     <p>Are you sure you want to delete "{{ property.name }}"?</p>
-    <form method="post">
+    <form method="post" action="{% url 'delete_property' property.id %}">
         {% csrf_token %}
         <button type="submit">Delete</button>
     </form>
-    <a href="{% url 'accounts:my_listing' %}">Cancel</a>
+    <a href="{% url 'my_listing' %}">Cancel</a>
 </div>
-{% endblock body %} {% endcomment %}
+{% endblock body %}
 
-<!DOCTYPE html>
+
+
+
+
+{% comment %} <!DOCTYPE html>
 <html>
 <head>
     <title>Delete Property</title>
@@ -35,10 +39,10 @@
 <body>
     <h2>Confirm Deletion</h2>
     <p>Are you sure you want to delete "{{ property.name }}"?</p>
-    <form method="post">
+    <form method="post" action="{% url 'delete_property' %}">
         {% csrf_token %}
         <button type="submit">Delete</button>
     </form>
-    <a href="{% url 'accounts:my_listing' %}">Cancel</a>
+    <a href="{% url 'my_listing' %}">Cancel</a>
 </body>
-</html>
+</html> {% endcomment %}

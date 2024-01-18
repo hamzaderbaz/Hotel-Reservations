@@ -20,18 +20,23 @@
 	</div>
 </div>
 
-<div class"container">
-	<div class="row">
-		<div class="col-md-4 mx-auto mt-5 mb-5">
-			<h3>Login</h3>
-			<form method="post" action="{% url 'login' %}">
-				{% csrf_token %}
-				{% bootstrap_form form %}
-				{% buttons %}
-				<button type="submit" class="btn btn-primary w-100">Login</button>
-				{% endbuttons %}
-			</form>
-			<p><a href="{% url 'password_reset' %}">Forgot Password?</a></p>
+
+<div class="base_form">
+	<div class"container">
+		<div class="row">
+			<div class="col-md-4 mx-auto mt-5 mb-5">
+				<div class="profile_sumary white-bg">
+					<h3>Login</h3>
+					<form method="post" action="{% url 'login' %}">
+						{% csrf_token %}
+						{% bootstrap_form form %}
+						{% buttons %}
+						<button type="submit" class="btn btn-primary w-100">Login</button>
+						{% endbuttons %}
+					</form>
+					<p><a href="{% url 'password_reset' %}">Forgot Password?</a></p>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
