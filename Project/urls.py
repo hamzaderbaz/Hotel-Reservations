@@ -17,10 +17,12 @@ urlpatterns = [
 
 
     # apps
-    path('', TemplateView.as_view(template_name='home.html'), name='home'),  # This is the URL for the home page
+    
+    # path('', TemplateView.as_view(template_name='home.html'), name='home'),  # This is the URL for the home page
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/' , include('accounts.urls', namespace='accounts')),
     path('admin/', admin.site.urls),
+    path('', include('home.urls', namespace='home')),
     path('hotels/' , include('property.urls' , namespace='property')),
     path('blog/' , include('blog.urls' , namespace='blog')),
     path('contact/', include('contact.urls', namespace='contact')),
