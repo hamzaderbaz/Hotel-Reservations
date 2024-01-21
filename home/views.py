@@ -1,5 +1,8 @@
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import ListView
+from django_filters.views import FilterView
+from requests import request
+from home.filters import PropertyFilter, PropertySearchFilter
 # from .models import FAQ , About , Info
 from property import models as property_models
 from property.models import Category, Property
@@ -10,7 +13,6 @@ from django.core.mail import send_mail
 from django.conf import settings
 
 # from .tasks import send_mail_task
-
 
 
 
@@ -53,34 +55,56 @@ def home(request):
 
 
 
-def home_search(request):
-    name = request.GET.get('q', '')
-    location = request.GET['location']
+# def home_search(request):
+#     name = request.GET.get('q', '')
+#     location = request.GET['location']
 
-    property_list = Property.objects.filter(
+#     property_list = Property.objects.filter(
+#             Q(place__name__icontains=location) &
+#             Q(name__icontains=name) 
+
+#     )
+
+#     return render(request,'home/home_search.html', {'property_list': property_list})
+
+
+class HomeSearchView(FilterView):
+    model = Property
+    paginate_by = 2
+    filterset_class = PropertySearchFilter
+    template_name = 'home/home_search.html'
+    context_object_name = 'property_list'
+
+    def get_queryset(self):
+        name = self.request.GET.get('q', '')
+        location = self.request.GET.get('location', '')
+
+        return Property.objects.filter(
             Q(place__name__icontains=location) &
-            Q(name__icontains=name) 
-            # Q(description__icontains=name) 
+            Q(name__icontains=name)
 
-    )
-
-    return render(request,'home/home_search.html', {'property_list': property_list})
-
-
-def category_filter(request, category):
-    # category = get_object_or_404(Category, name=category)
-    category = Category.objects.get(name=category)
-    property_list = Property.objects.filter(category=category)
-    return render(request,'home/home_search.html', {'property_list': property_list})
+        )
 
 
 
 
+# def category_filter(request, category, FilterView):
+#     # category = get_object_or_404(Category, name=category)
+#     category = Category.objects.get(name=category)
+#     property_list = Property.objects.filter(category=category)
+#     return render(request,'home/home_search.html', {'property_list': property_list})
 
+class CategoryFilterView(FilterView):
+    model = Property
+    paginate_by = 3
+    template_name = 'home/home_search.html'
+    filterset_class = PropertyFilter
+    context_object_name = 'property_list'
 
-
-
-
+    def get_queryset(self):
+        category_name = self.kwargs['category']
+        category = get_object_or_404(Category, name=category_name)
+        return Property.objects.filter(category=category)
 
 
 
