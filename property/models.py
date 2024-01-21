@@ -71,10 +71,21 @@ class PropertyImages(models.Model):
 class Place(models.Model):
     name = models.CharField(max_length=50)
     image = models.ImageField( upload_to='places/')
+    # slug = models.SlugField(blank=True, null=True)
 
     class Meta:
         verbose_name = ("Place")
         verbose_name_plural = ("Places")
+
+
+    # def save(self, *args, **kwargs):
+    #     self.slug = slugify(self.name)
+    #     super().save(*args, **kwargs)
+        
+    # def save(self, *args, **kwargs):
+    #     if self.name:
+    #         self.slug = slugify(self.name)
+    #     super(Place, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name
@@ -83,6 +94,8 @@ class Place(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=25)
+    icon = models.CharField(max_length=25)
+
 
     def __str__(self):
         return self.name

@@ -9,7 +9,8 @@ app_name = 'home'
 urlpatterns = [
 
     path('', views.home , name='home'),    
-    path('search/',views.home_search , name='home_search'),    
+    path('search/', views.home_search , name='home_search'),    
+    path('category/<slug:category>/', views.category_filter, name='category_filter'),   
     # path( 'about/',views.AboutView.as_view() , name='about'),
     # path( 'dashboard/',views.dashboard , name='dashboard' ),
 

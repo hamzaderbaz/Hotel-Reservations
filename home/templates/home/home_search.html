@@ -4,16 +4,13 @@
 {% block body %}
 
 
-
 <div class="hero-wrap js-fullheight" style="background-image: url({% static 'images/bg_5.jpg' %});">
 	<div class="overlay"></div>
 	<div class="container">
 		<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"
 			data-scrollax-parent="true">
 			<div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-				<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span
-						class="mr-2"><a href="index.html">Home</a></span> <span>Hotel</span></p>
-				<h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{my_category|title}}</h1>
+				<h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Hotels{{my_category|title}}</h1>
 			</div>
 		</div>
 	</div>
@@ -53,17 +50,17 @@
 											<span class="price per-price">${{property.price}}<br><small>/night</small></span>
 										</div>
 									</div>
-									<p>{{property.description|safe|truncatewords:5}}</p>
+									{% comment %} <p>{{property.description|safe|truncatewords:5}}</p> {% endcomment %}
 									<hr>
 									<p class="bottom-area d-flex">
-										<span><i class="icon-map-o"></i> {{property.place}}</span>
+										<span><i class=""></i>{{property.place}}</span>
 										<span class="ml-auto"><a href="{{property.get_absolute_url}}">Book Now</a></span>
 									</p>
 								</div>
 							</div>
                         </div>
                     {% empty %}
-                        <h2> not available now ...</h2>
+                        <h2>Not available now ...</h2>
 					{% endfor %}
 				</div>
 

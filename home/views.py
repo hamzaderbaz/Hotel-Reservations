@@ -1,61 +1,86 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.views.generic import ListView
 # from .models import FAQ , About , Info
 from property import models as property_models
+from property.models import Category, Property
 from blog import models as blog_models
 from django.contrib.auth.models import User
 from django.db.models import Count, Q
 from django.core.mail import send_mail
 from django.conf import settings
+
 # from .tasks import send_mail_task
 
 
 
 
 def home(request):
+
+    places = property_models.Place.objects.all().annotate(property_count=Count('property_place'))[:5]
     property_category = property_models.Category.objects.all()
+
+    
+    restaurants_list = property_models.Property.objects.filter(category__name='Restaurants')[:5]
+    hotels_list = property_models.Property.objects.filter(category__name='Hotels')[:5]
+    places_list = property_models.Property.objects.filter(category__name='Places')[:5]
     recent_posts = blog_models.Post.objects.all()[:4]
-    popular_appartments = property_models.Property.objects.filter(category__name='Apparment')[:4]
-    popular_villa = property_models.Property.objects.filter(category__name='Vella')[:5]
-    popular_suits = property_models.Property.objects.filter(category__name='suite')[:5]
+
     # about = About.objects.last()
 
     users_count = User.objects.all().count()
-    appartments_count = property_models.Property.objects.filter(category__name='Apparment').count()
-    villa_count = property_models.Property.objects.filter(category__name='Vella').count()
-    suits_count = property_models.Property.objects.filter(category__name='suite').count()
+    restaurants_count = property_models.Property.objects.filter(category__name='Restaurants').count()
+    hotels_count = property_models.Property.objects.filter(category__name='Hotels').count()
+    places_count = property_models.Property.objects.filter(category__name='Places').count()
 
-    places = property_models.Place.objects.all().annotate(property_count=Count('property_place'))
+    # places = property_models.Place.objects.all()[:2]
+
 
     return render(request,'home/home.html', {
+        
+        'places':places,
         'property_category': property_category , 
+
+        'restaurants_list': restaurants_list , 
+        'hotels_list' : hotels_list , 
+        'places_list' : places_list ,
         'recent_posts' : recent_posts , 
-        'popular_appartments': popular_appartments , 
-        # 'about':about  , 
-        'popular_villa' : popular_villa , 
-        'popular_suits' : popular_suits ,
+
         'users_count' : users_count , 
-        'appartments_count': appartments_count , 
-        'villa_count' : villa_count  , 
-        'suits_count' : suits_count , 
-        'places':places
+        'restaurants_count': restaurants_count , 
+        'hotels_count' : hotels_count  , 
+        'places_count' : places_count , 
     })
 
 
 
 def home_search(request):
-    name = request.GET.get('q','')
+    name = request.GET.get('q', '')
     location = request.GET['location']
 
-
-    search_result = property_models.Property.objects.filter(
-            Q(place__icontains=location) &
-            Q(title__icontains=name) 
+    search_result = Property.objects.filter(
+            Q(place__name__icontains=location) &
+            Q(name__icontains=name) 
             # Q(description__icontains=name) 
 
     )
 
-    return render(request,'home/home_search.html',{'search_result': search_result})
+    return render(request,'home/home_search.html', {'search_result': search_result})
+
+
+def category_filter(request, category):
+    # category = get_object_or_404(Category, name=category)
+    category = Category.objects.get(name=category)
+    property_list = Property.objects.filter(category=category)
+    return render(request,'home/home_search.html', {'property_list': property_list})
+
+
+
+
+
+
+
+
+
 
 
 

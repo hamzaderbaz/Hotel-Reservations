@@ -58,36 +58,41 @@
                             <a href="about.html" class="nav-link">About</a>
                         </li>
                     </ul>
-                    
+
                     <div class="navbar-nav ml-auto">
                         {% if request.user.is_authenticated %}
-                            <li class="nav-item cta">
-                                <a href="{% url 'property_new' %}" class="nav-link"><span>{% trans 'Add Property' %}</span></a>
-                            </li>
-                            <li class="nav-item dropdown cta">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {% trans 'Profile' %}
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{% url 'profile' %}">{% trans 'View Profile' %}</a>
-                                    {% comment %} <a class="dropdown-item" href="{% url 'settings' %}">{% trans 'Settings' %}</a> {% endcomment %}
-                                    <a class="dropdown-item" href="{% url 'password_change' %}">{% trans 'Change Password' %}</a>
-                                    <a class="dropdown-item" href="{% url 'my_reservation' %}">{% trans 'My Reservation' %}</a>
-                                    <a class="dropdown-item" href="{% url 'my_listing' %}">{% trans 'My Listing' %}</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="{% url 'logout' %}">{% trans 'Logout' %}</a>
-                                </div>
-                            </li>
+                        <li class="nav-item cta">
+                            <a href="{% url 'property_new' %}"
+                                class="nav-link"><span>{% trans 'Add Property' %}</span></a>
+                        </li>
+                        <li class="nav-item dropdown cta">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {% trans 'Profile' %}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{% url 'profile' %}">{% trans 'View Profile' %}</a>
+                                {% comment %} <a class="dropdown-item"
+                                    href="{% url 'settings' %}">{% trans 'Settings' %}</a> {% endcomment %}
+                                <a class="dropdown-item"
+                                    href="{% url 'password_change' %}">{% trans 'Change Password' %}</a>
+                                <a class="dropdown-item"
+                                    href="{% url 'my_reservation' %}">{% trans 'My Reservation' %}</a>
+                                <a class="dropdown-item" href="{% url 'my_listing' %}">{% trans 'My Listing' %}</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'logout' %}">{% trans 'Logout' %}</a>
+                            </div>
+                        </li>
                         {% else %}
-                            <div class="nav-item cta">
-                                <a class="boxed-btn3" href="{% url 'login' %}">{% trans 'Login' %}</a>
-                            </div>
-                            <div class="nav-item cta">
-                                <a class="boxed-btn3" href="{% url 'signup' %}">{% trans 'Signup' %}</a>
-                            </div>
+                        <div class="nav-item cta">
+                            <a class="boxed-btn3" href="{% url 'login' %}">{% trans 'Login' %}</a>
+                        </div>
+                        <div class="nav-item cta">
+                            <a class="boxed-btn3" href="{% url 'signup' %}">{% trans 'Signup' %}</a>
+                        </div>
                         {% endif %}
                     </div>
- 
+
                 </div>
             </div>
         </nav>
