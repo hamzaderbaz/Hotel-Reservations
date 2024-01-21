@@ -16,8 +16,8 @@ from django.conf import settings
 
 def home(request):
 
-    places = property_models.Place.objects.all().annotate(property_count=Count('property_place'))[:5]
     property_category = property_models.Category.objects.all()
+    places = property_models.Place.objects.all().annotate(property_count=Count('property_place'))[:5]
 
     
     restaurants_list = property_models.Property.objects.filter(category__name='Restaurants')[:5]
@@ -37,18 +37,18 @@ def home(request):
 
     return render(request,'home/home.html', {
         
-        'places':places,
         'property_category': property_category , 
-
+        'recent_posts' : recent_posts , 
         'restaurants_list': restaurants_list , 
         'hotels_list' : hotels_list , 
         'places_list' : places_list ,
-        'recent_posts' : recent_posts , 
 
         'users_count' : users_count , 
         'restaurants_count': restaurants_count , 
         'hotels_count' : hotels_count  , 
         'places_count' : places_count , 
+        'places':places,
+
     })
 
 
@@ -57,14 +57,14 @@ def home_search(request):
     name = request.GET.get('q', '')
     location = request.GET['location']
 
-    search_result = Property.objects.filter(
+    property_list = Property.objects.filter(
             Q(place__name__icontains=location) &
             Q(name__icontains=name) 
             # Q(description__icontains=name) 
 
     )
 
-    return render(request,'home/home_search.html', {'search_result': search_result})
+    return render(request,'home/home_search.html', {'property_list': property_list})
 
 
 def category_filter(request, category):
@@ -72,9 +72,6 @@ def category_filter(request, category):
     category = Category.objects.get(name=category)
     property_list = Property.objects.filter(category=category)
     return render(request,'home/home_search.html', {'property_list': property_list})
-
-
-
 
 
 

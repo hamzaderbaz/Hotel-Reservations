@@ -26,6 +26,7 @@ urlpatterns = [
     path('hotels/' , include('property.urls' , namespace='property')),
     path('blog/' , include('blog.urls' , namespace='blog')),
     path('contact/', include('contact.urls', namespace='contact')),
+    path('about/', include('about.urls', namespace='about')),
     path('summernote/', include('django_summernote.urls')),
     
 
