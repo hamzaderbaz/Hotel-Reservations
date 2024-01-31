@@ -12,9 +12,7 @@ from property.views import NewProperty
 
 urlpatterns = [
 
-    path('i18n/', include('django.conf.urls.i18n')),
-    path('api-auth/', include('rest_framework.urls')),
-
+    # path('i18n/', include('django.conf.urls.i18n')),
 
     # apps
     
@@ -23,7 +21,7 @@ urlpatterns = [
     path('accounts/' , include('accounts.urls', namespace='accounts')),
     path('admin/', admin.site.urls),
     path('', include('home.urls', namespace='home')),
-    path('hotels/' , include('property.urls' , namespace='property')),
+    path('hotels/' , include('property.urls', namespace='property')),
     path('blog/' , include('blog.urls' , namespace='blog')),
     path('contact/', include('contact.urls', namespace='contact')),
     path('about/', include('about.urls', namespace='about')),
@@ -52,9 +50,14 @@ urlpatterns = [
     # path('rate/<int:post_id>/<int:rating>/', views.rate),
     # path('ratings/', include('star_ratings.urls', namespace='ratings')),
 
-    # path('' , include('settings.urls' , namespace='about')),
+
+
+    # API
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    # path('api/', include('property.urls', namespace='property_api')),
     # path('auth/', include('dj_rest_auth.urls')),
-    # path('auth/registration/', include('dj_rest_auth.registration.urls'))
+    # path('auth/registration/', include('dj_rest_auth.registration.urls')),
+
 
 
 ]
