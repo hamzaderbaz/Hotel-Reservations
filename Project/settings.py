@@ -41,11 +41,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    #my apps
+    # my apps
     'home', 'property', 'blog', 'contact', 'about', 'settings',
-    'django_summernote', 'django_filters', "bootstrap4", 'django_bootstrap5', 'rest_framework', 'taggit', 'star_ratings', 'markdown', #'reports',
+    'django_summernote', 'django_filters', "bootstrap4", 'django_bootstrap5', 
+    'rest_framework', 'rest_framework.authtoken','dj_rest_auth', 'django.contrib.sites', 'allauth', 'allauth.account','dj_rest_auth.registration',
+    'taggit', 'star_ratings', 'markdown', #'reports',
     
 ]
+
+SITE_ID = 1
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -56,6 +61,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
+
 ]
 
 ROOT_URLCONF = 'Project.urls'

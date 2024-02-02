@@ -18,10 +18,10 @@ urlpatterns = [
     
     # path('', TemplateView.as_view(template_name='home.html'), name='home'),  # This is the URL for the home page
     path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/' , include('accounts.urls', namespace='accounts')),
+    path('accounts/', include('accounts.urls', namespace='accounts')),
     path('admin/', admin.site.urls),
     path('', include('home.urls', namespace='home')),
-    path('hotels/' , include('property.urls', namespace='property')),
+    path('hotels/', include('property.urls', namespace='property')),
     path('blog/' , include('blog.urls' , namespace='blog')),
     path('contact/', include('contact.urls', namespace='contact')),
     path('about/', include('about.urls', namespace='about')),
@@ -53,10 +53,10 @@ urlpatterns = [
 
 
     # API
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
-    # path('api/', include('property.urls', namespace='property_api')),
-    # path('auth/', include('dj_rest_auth.urls')),
-    # path('auth/registration/', include('dj_rest_auth.registration.urls')),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('auth/', include('dj_rest_auth.urls')),
+    path('auth/registration/', include('dj_rest_auth.registration.urls')),
+    # path('hotels/property_api/', include('property.urls', namespace='property_api')),
 
 
 
