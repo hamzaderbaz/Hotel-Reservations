@@ -9,7 +9,7 @@ from .forms import UserForm , ProfileForm , UserCreateForm
 from django.contrib import messages
 from property.models import PropertyBook , Property
 from property.forms import PropertyReviewForm
-
+from .forms import LoginForm
 
 
 
@@ -108,8 +108,6 @@ def delete_property(request, property_id):
         return redirect('my_listing')  # Redirect to your property list view
 
     return render(request, 'accounts/delete_property_confirm.html', {'property': property_to_delete})
-
-
 
 
 

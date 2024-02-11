@@ -3,6 +3,7 @@
 {% load bootstrap4 %}
 {% block body %}
 
+
 {% comment %} <div class="ilstration_img wow fadeInRight d-none d-lg-block text-right" data-wow-duration="1s"
 	data-wow-delay=".2s">
 	<img src="{% static 'images/bg_3.jpg' %}" alt="" />
@@ -20,26 +21,27 @@
 	</div>
 </div>
 
-
-<div class="base_form">
-	<div class"container">
-		<div class="row">
-			<div class="col-md-4 mx-auto mt-5 mb-5">
-				<div class="profile_sumary white-bg">
-					<h3>Login</h3>
-					<form method="post" action="{% url 'login' %}">
-						{% csrf_token %}
-						{% bootstrap_form form %}
-						{% buttons %}
-						<button type="submit" class="btn btn-primary w-100">Login</button>
-						{% endbuttons %}
-					</form>
-					<p><a href="{% url 'password_reset' %}">Forgot Password?</a></p>
+<section class="ftco-section bg-light">
+	<div class="base_form">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-5 mx-auto mt-3 mb-3">
+					<div class="profile_sumary white-bg">
+						<h3>Login</h3>
+						<form method="post" action="{% url 'login' %}">
+							{% csrf_token %}
+							{% bootstrap_form form %}
+							{% buttons %}
+							<button type="submit" class="btn btn-primary w-100">Login</button>
+							{% endbuttons %}
+						</form>
+						<p><a href="{% url 'password_reset' %}">Forgot Password?</a></p>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+</section>
 
 
 {% endblock  %}
@@ -47,6 +49,117 @@
 
 
 
+{% comment %} <html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Login Form</title>
+		<!-- Add your CSS styles here if needed -->
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+				font-family: Arial, sans-serif;
+			}
+
+			.hero-wrap {
+				background-image: url('images/bg_2.jpg');
+				/* Replace 'images/bg_2.jpg' with the correct path to your background image */
+				background-size: cover;
+				background-position: center;
+				height: 100vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				position: relative;
+			}
+
+			.overlay {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(0, 0, 0, 0.5);
+				/* Adjust the opacity and color as needed */
+			}
+
+			.login-container {
+				background-color: rgba(255, 255, 255, 0.8);
+				padding: 20px;
+				border-radius: 10px;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			}
+
+			.form-group {
+				margin-bottom: 20px;
+			}
+
+			label {
+				display: block;
+				margin-bottom: 5px;
+			}
+
+			input {
+				width: 100%;
+				padding: 10px;
+				box-sizing: border-box;
+				border: 1px solid #ccc;
+				border-radius: 5px;
+				font-size: 16px;
+			}
+
+			button {
+				background-color: #007bff;
+				color: #fff;
+				padding: 10px 20px;
+				border: none;
+				border-radius: 5px;
+				cursor: pointer;
+				font-size: 16px;
+			}
+
+			button:hover {
+				background-color: #0056b3;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="hero-wrap js-fullheight" style="background-image: url({% static 'images/bg_2.jpg' %});">
+			<div class="overlay"></div>
+			<div class="container">
+				<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"
+					data-scrollax-parent="true">
+					<div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+						<h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Login
+						</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="login-container">
+			<form action="#" method="post" id="loginForm">
+				<div class="form-group">
+					<label for="username">Username:</label>
+					<input type="text" id="username" name="username" required>
+				</div>
+
+				<div class="form-group">
+					<label for="password">Password:</label>
+					<input type="password" id="password" name="password" required>
+				</div>
+
+				<div class="form-group">
+					<button type="submit">Login</button>
+				</div>
+			</form>
+		</div>
+	</body>
+
+</html> {% endcomment %}
 
 
 
@@ -55,30 +168,32 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+{% comment %} <div class="container mt-5">
+	<div class="row justify-content-center">
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-header">
+					<h2 class="text-center">Login</h2>
+				</div>
+				<div class="card-body">
+					<form method="post" action="{% url 'login' %}">
+						{% csrf_token %}
+						<div class="form-group">
+							<label for="username">Username:</label>
+							<input type="text" class="form-control" id="username" name="username" required>
+						</div>
+						<div class="form-group">
+							<label for="password">Password:</label>
+							<input type="password" class="form-control" id="password" name="password" required>
+						</div>
+						<button type="submit" class="btn btn-primary btn-block">Login</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="mt-5"></div> {% endcomment %}
 
 
 
