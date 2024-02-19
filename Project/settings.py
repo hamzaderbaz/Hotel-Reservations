@@ -42,14 +42,27 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # my apps
-    'home', 'property', 'blog', 'contact', 'about', 'settings',
+    'home', 'property', 'blog', 'contact', 'about',
     'django_summernote', 'django_filters', "bootstrap4", 'django_bootstrap5', 
     'rest_framework', 'rest_framework.authtoken','dj_rest_auth', 'django.contrib.sites', 'allauth', 'allauth.account','dj_rest_auth.registration',
     'taggit', 'star_ratings', 'markdown', #'reports',
     
 ]
 
+
 SITE_ID = 1
+
+
+SWAGGER_SETTINGS = {
+    'USE_SESSION_AUTH': False,
+    'SECURITY_DEFINITIONS': {
+        'api_key': {
+            'type': 'apiKey',
+            'in': 'header',
+            'name': 'Authorization',
+        },
+    },
+}
 
 
 MIDDLEWARE = [
