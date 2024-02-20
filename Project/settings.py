@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'home', 'property', 'blog', 'contact', 'about',
     'django_summernote', 'django_filters', "bootstrap4", 'django_bootstrap5', 
     'rest_framework', 'rest_framework.authtoken','dj_rest_auth', 'django.contrib.sites', 'allauth', 'allauth.account','dj_rest_auth.registration',
+    'rest_framework_swagger', 'drf_yasg',
     'taggit', 'star_ratings', 'markdown', #'reports',
     
 ]
