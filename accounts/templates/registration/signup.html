@@ -17,15 +17,16 @@
 <div class"container">
 	<div class="row">
 		<div class="col-md-4 mx-auto mt-5 mb-5">
-			<h3> Signup Now</h3>
-			<form method="POST">
-				{% csrf_token %}
-				{% bootstrap_form signup_form %}
-				{% buttons %}
-				<button type="submit" class="btn btn-primary w-100">Signup</button>
-				{% endbuttons %}
-			</form>
-
+			<div class="signup white-bg">
+				<h3> Signup Now</h3>
+				<form method="POST">
+					{% csrf_token %}
+					{% bootstrap_form signup_form %}
+					{% buttons %}
+					<button type="submit" class="btn btn-primary w-100">Signup</button>
+					{% endbuttons %}
+				</form>
+			</div>
 		</div>
 	</div>
 </div>
