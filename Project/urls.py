@@ -5,7 +5,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
 
-# importing from apps
 from accounts import views
 from property.views import NewProperty
 
@@ -16,12 +15,12 @@ from drf_yasg import openapi
 schema_view = get_schema_view(
     
     openapi.Info(
-        title='Vending-Machine',
+        title='Booking.com',
         default_version='v1',
-        description="Vending-Machine API",
-        terms_of_service="https://www.vending-machine.com/terms/",
-        contact=openapi.Contact(email="contact@vending-machine.com"),
-        license=openapi.License(name="Vending Machine License"),
+        description="Booking.com API",
+        terms_of_service="https://www.booking.com/terms/",
+        contact=openapi.Contact(email="contact@booking.com"),
+        license=openapi.License(name="Booking.com License"),
     ),
     public=True,
 )
@@ -32,7 +31,6 @@ schema_view = get_schema_view(
 
 urlpatterns = [
 
-    # path('i18n/', include('django.conf.urls.i18n')),
 
     # apps
     
@@ -73,13 +71,13 @@ urlpatterns = [
 
 
     # API
+    # path('api/', include('Vending_Machine.urls')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('auth/', include('dj_rest_auth.urls')),
     path('auth/registration/', include('dj_rest_auth.registration.urls')),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'), 
 
-    # path('hotels/property_api/', include('property.urls', namespace='property_api')),
 
 
 
