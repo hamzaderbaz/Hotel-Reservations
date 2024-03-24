@@ -1,1 +1,1 @@
-# Booking.com - Hotel-Reservations 
+# Booking.com
