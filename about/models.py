@@ -2,21 +2,6 @@ from django.db import models
 from django.urls import reverse
 
 
-
-    
-
-
-# class FAQ(models.Model):
-#     title = models.CharField(max_length=150)
-#     description = models.TextField(max_length=3000)
-
-#     def __str__(self):
-#         return self.title
-    
-
-
-
-
 class About(models.Model):
     what_we_do = models.TextField(max_length=1000)
     our_mission = models.TextField(max_length=1000)
@@ -50,6 +35,19 @@ class FAQ(models.Model):
 
     # def get_absolute_url(self):
     #     return reverse("FAQ_detail", kwargs={"pk": self.pk})
+
+
+
+
+
+
+
+# class FAQ(models.Model):
+#     title = models.CharField(max_length=150)
+#     description = models.TextField(max_length=3000)
+
+#     def __str__(self):
+#         return self.title
 
 
 
